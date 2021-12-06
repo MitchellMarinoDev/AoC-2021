@@ -3,7 +3,7 @@ use crate::days::Day;
 pub struct Day3;
 
 const INPUT: &str = "inputs/d3.txt";
-const BIT_WIDTH: u32 = 5;
+const BIT_WIDTH: u32 = 12;
 
 impl Day for Day3 {
     fn solve() -> (String, String) {
@@ -11,20 +11,20 @@ impl Day for Day3 {
         let report: Vec<_> = raw.lines()
             .map(|l| u32::from_str_radix(l, 2).unwrap()).collect();
 
-        let report: Vec<u32> = vec![
-            00100,
-            11110,
-            10110,
-            10111,
-            10101,
-            01111,
-            00111,
-            11100,
-            10000,
-            11001,
-            00010,
-            01010,
-        ];
+        // let report: Vec<u32> = vec![
+        //     u32::from_str_radix("00100", 2).unwrap(),
+        //     u32::from_str_radix("11110", 2).unwrap(),
+        //     u32::from_str_radix("10110", 2).unwrap(),
+        //     u32::from_str_radix("10111", 2).unwrap(),
+        //     u32::from_str_radix("10101", 2).unwrap(),
+        //     u32::from_str_radix("01111", 2).unwrap(),
+        //     u32::from_str_radix("00111", 2).unwrap(),
+        //     u32::from_str_radix("11100", 2).unwrap(),
+        //     u32::from_str_radix("10000", 2).unwrap(),
+        //     u32::from_str_radix("11001", 2).unwrap(),
+        //     u32::from_str_radix("00010", 2).unwrap(),
+        //     u32::from_str_radix("01010", 2).unwrap(),
+        // ];
 
         // Solve
         let mut values = [0u32; 12];
