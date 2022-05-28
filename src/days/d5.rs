@@ -7,7 +7,7 @@ const INPUT: &str = "inputs/d5.txt";
 
 impl Day for Day5 {
     fn solve() -> (String, String) {
-        let raw = std::fs::read_to_string(INPUT).expect("input file");
+        let raw = std::fs::read_to_string(INPUT).expect(&*format!("Check input file {}", INPUT));
         let mut vents = vec![];
         for l in raw.lines() {
             let mut split = l.split("->");
@@ -19,16 +19,16 @@ impl Day for Day5 {
         }
 
         // Solve!
-        let mut field = HashMap::new();
-        for (start, end) in vents {
-            if start.0 == end.0 {
-                for i in start.1..end.1 {
-
-                }
-            } else if start.1 == end.1 {
-
-            }
-        }
+        // let mut field = HashMap::new();
+        // for (start, end) in vents {
+        //     if start.0 == end.0 {
+        //         for i in start.1..end.1 {
+        //
+        //         }
+        //     } else if start.1 == end.1 {
+        //
+        //     }
+        // }
 
 
         ("".to_string(), "".to_string())

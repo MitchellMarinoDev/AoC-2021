@@ -9,7 +9,7 @@ pub mod d5;
 
 use d1::Day1;
 use d2::Day2;
-use crate::days::d3::Day3;
+use d3::Day3;
 
 use d5::Day5;
 

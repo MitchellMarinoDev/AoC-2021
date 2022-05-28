@@ -6,7 +6,7 @@ const INPUT: &str = "inputs/d1.txt";
 
 impl Day for Day1 {
     fn solve() -> (String, String) {
-        let input = std::fs::read_to_string(INPUT).expect("Check input file");
+        let input = std::fs::read_to_string(INPUT).expect(&*format!("Check input file {}", INPUT));
         let parsed: Vec<_> = input.lines().map(|s| s.parse::<u32>().unwrap()).collect();
 
         // Part 1

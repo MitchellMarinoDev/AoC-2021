@@ -14,7 +14,7 @@ enum Direction {
 
 impl Day for Day2 {
 	fn solve() -> (String, String) {
-		let raw = std::fs::read_to_string(INPUT).expect("Check input file");
+		let raw = std::fs::read_to_string(INPUT).expect(&*format!("Check input file {}", INPUT));
 		let parsed: Vec<(Direction, i32)> = raw.lines().map(|l| {
 			let mut s = l.split(" ");
 			let dir = s.next().unwrap().try_into().unwrap();
