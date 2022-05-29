@@ -23,16 +23,14 @@ impl Day for Day5 {
         for ((x1, y1), (x2, y2)) in vents.iter() {
             // First only consider horizontal or vertical lines
             if x1 == x2 {
-                let range = if y1 > y2 { *y2..=*y1 } else { *y1..=*y2 };
-                for y in range {
+                for y in range(*y1, *y2) {
                     let p = (*x1, y);
                     let count = *points.get(&p).unwrap_or(&0);
                     points.insert(p, count+1);
                 }
             }
-            if y1 == y2 {
-                let range = if x1 > x2 { *x2..=*x1 } else { *x1..=*x2 };
-                for x in range {
+            else if y1 == y2 {
+                for x in range(*x1, *x2) {
                     let p = (x, *y1);
                     let count = *points.get(&p).unwrap_or(&0);
                     points.insert(p, count+1);
@@ -40,8 +38,32 @@ impl Day for Day5 {
             }
         }
 
-        let count = points.iter().filter(|(_, count)| **count >= 2).count();
+        let p1 = points.iter().filter(|(_, count)| **count >= 2).count();
 
-        (count.to_string(), "".to_string())
+        // P2
+        for ((x1, y1), (x2, y2)) in vents.iter() {
+            // Now, only handle the diagonals
+            if x1 != x2 && y1 != y2 {
+                let range_x = range(*x1, *x2);
+                let range_y = range(*y1, *y2);
+                for point in range_x.into_iter().zip(range_y) {
+                    let count = *points.get(&point).unwrap_or(&0);
+                    points.insert(point, count+1);
+                }
+            }
+        }
+
+        let p2 = points.iter().filter(|(_, count)| **count >= 2).count();
+
+        (p1.to_string(), p2.to_string())
+    }
+}
+
+/// Gets an inclusive range that can have the either number be bigger.
+fn range(n1: u32, n2: u32) -> Vec<u32> {
+    if n1 > n2 {
+        (n2..=n1).rev().collect()
+    } else {
+        (n1..=n2).collect()
     }
 }
