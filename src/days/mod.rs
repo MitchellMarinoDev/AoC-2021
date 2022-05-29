@@ -5,19 +5,20 @@ pub trait Day {
 pub mod d1;
 pub mod d2;
 pub mod d3;
+pub mod d4;
 pub mod d5;
 
 use d1::Day1;
 use d2::Day2;
 use d3::Day3;
-
+use d4::Day4;
 use d5::Day5;
 
-pub const DAYS: [fn() -> (String, String); 4] = [
+pub const DAYS: [fn() -> (String, String); 5] = [
     Day1::solve,
     Day2::solve,
     Day3::solve,
-
+    Day4::solve,
     Day5::solve,
 ];
 
