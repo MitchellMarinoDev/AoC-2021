@@ -20,7 +20,8 @@ impl Day for Day1 {
         }
 
         // Part 2
-        let iter = parsed.iter()
+        let iter = parsed
+            .iter()
             .zip(parsed.iter().skip(1))
             .zip(parsed.iter().skip(2))
             .map(|((x, y), z)| (x, y, z));

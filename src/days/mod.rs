@@ -27,4 +27,3 @@ pub const DAYS: [fn() -> (String, String); 7] = [
     Day6::solve,
     Day7::solve,
 ];
-

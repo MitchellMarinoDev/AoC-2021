@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use crate::days::Day;
+use std::collections::HashMap;
 
 pub struct Day5;
 
@@ -13,8 +13,14 @@ impl Day for Day5 {
             let mut split = l.split(" -> ");
             let mut pos1 = split.next().unwrap().trim().split(",");
             let mut pos2 = split.next().unwrap().trim().split(",");
-            let start: (u32, u32) = (pos1.next().unwrap().parse().unwrap(), pos1.next().unwrap().parse().unwrap());
-            let end: (u32, u32) =   (pos2.next().unwrap().parse().unwrap(), pos2.next().unwrap().parse().unwrap());
+            let start: (u32, u32) = (
+                pos1.next().unwrap().parse().unwrap(),
+                pos1.next().unwrap().parse().unwrap(),
+            );
+            let end: (u32, u32) = (
+                pos2.next().unwrap().parse().unwrap(),
+                pos2.next().unwrap().parse().unwrap(),
+            );
             vents.push((start, end));
         }
 
@@ -26,14 +32,13 @@ impl Day for Day5 {
                 for y in range(*y1, *y2) {
                     let p = (*x1, y);
                     let count = *points.get(&p).unwrap_or(&0);
-                    points.insert(p, count+1);
+                    points.insert(p, count + 1);
                 }
-            }
-            else if y1 == y2 {
+            } else if y1 == y2 {
                 for x in range(*x1, *x2) {
                     let p = (x, *y1);
                     let count = *points.get(&p).unwrap_or(&0);
-                    points.insert(p, count+1);
+                    points.insert(p, count + 1);
                 }
             }
         }
@@ -48,7 +53,7 @@ impl Day for Day5 {
                 let range_y = range(*y1, *y2);
                 for point in range_x.into_iter().zip(range_y) {
                     let count = *points.get(&point).unwrap_or(&0);
-                    points.insert(point, count+1);
+                    points.insert(point, count + 1);
                 }
             }
         }

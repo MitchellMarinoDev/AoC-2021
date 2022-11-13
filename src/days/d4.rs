@@ -7,7 +7,13 @@ const INPUT: &str = "inputs/d4.txt";
 impl Day for Day4 {
     fn solve() -> (String, String) {
         let raw = std::fs::read_to_string(INPUT).expect(&*format!("Check input file {}", INPUT));
-        let draw: Vec<u32> = raw.split("\n").next().unwrap().split(',').map(|s| s.parse().unwrap()).collect();
+        let draw: Vec<u32> = raw
+            .split("\n")
+            .next()
+            .unwrap()
+            .split(',')
+            .map(|s| s.parse().unwrap())
+            .collect();
         let mut boards = vec![];
         for board in raw.split("\n\n").skip(1) {
             let mut nums = [[0; 5]; 5];
@@ -25,8 +31,7 @@ impl Day for Day4 {
 
         // Solve
         let mut p1 = 0;
-        'outer:
-        for d in draw.iter() {
+        'outer: for d in draw.iter() {
             for b in boards.iter_mut() {
                 b.check(*d);
                 if b.win() {
